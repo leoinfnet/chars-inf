@@ -12,6 +12,6 @@ import java.util.Map;
 public class HelloController {
     @GetMapping
     public ResponseEntity hello(){
-        return ResponseEntity.ok(Map.of("Message", "HELLO"));
+        return ResponseEntity.ok(Map.of("Message", "HELLO2"));
     }
 }
