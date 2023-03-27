@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: "127.0.0.1:30400/chars-inf"
+          image: "127.0.0.1:30400/chars-inf:6f38805"
           imagePullPolicy: Always
           ports:
             - name: http
