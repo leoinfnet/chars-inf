@@ -23,5 +23,12 @@ node {
          customImage.push('latest')
 
     }
+    stage('Deploy'){
+        customImage.push('latest')
+        sh 'kubectl apply -f https://raw.githubusercontent.com/leoinfnet/chars-inf/main/k8s_app.yaml'
+        sh "kubectl set image deployment chars chars=${imageName} --record"
+        sh "kubectl rollout status deployment/chars"
 
+
+    }
 }
