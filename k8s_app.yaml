@@ -2,36 +2,35 @@ apiVersion: v1
 kind: Service
 metadata:
   name: chars-info
-  labels:
-    app: app
+
 spec:
   ports:
     - port: 8081
-      targetPort: 8080
+      targetPort: 8081
   selector:
-    app: app
-  type: NodePort
+    app: chars
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
   labels:
-    app: app
+    app: chars
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app
+      app: chars
   template:
     metadata:
       labels:
-        app: app
+        app: chars
     spec:
       containers:
-        - name: app
+        - name: chars
           image: "127.0.0.1:30400/chars-inf:6f38805"
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8081
