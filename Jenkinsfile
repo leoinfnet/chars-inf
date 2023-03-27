@@ -14,11 +14,11 @@ node {
     // Configuramos os estágios
 
     stage "Build"
-
-        def customImage = docker.build("${imageName}")
+        sh 'mvn -B -DskipTests clean package'
+        //def customImage = docker.build("${imageName}")
 
 
     stage "Push"
 
-        customImage.push()
+        //customImage.push()
 }
