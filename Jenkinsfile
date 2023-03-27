@@ -1,6 +1,6 @@
 node {
     checkout scm
-
+    def customImage
     // Pega o commit id para ser usado de tag (versionamento) na imagem
     sh "git rev-parse --short HEAD > commit-id"
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
@@ -16,7 +16,7 @@ node {
         withMaven(maven: 'maven') {
               sh "mvn clean package"
         }
-        def customImage = docker.build("${imageName}")
+        customImage = docker.build("${imageName}")
     }
     stage('Push'){
          customImage.push()
