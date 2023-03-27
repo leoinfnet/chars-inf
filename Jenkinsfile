@@ -24,7 +24,7 @@ node {
               sh "mvn clean package"
 
             }
-          }
+
 
         //def customImage = docker.build("${imageName}")
 
