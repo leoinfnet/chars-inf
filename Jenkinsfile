@@ -11,10 +11,15 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
 
     // Configuramos os estágios
+    stage ('Build') {
+    //def customImage = docker.build("${imageName}")
+    withMaven {
+          sh "mvn clean package"
+        } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+      }
+    }
 
-    stage "Build"
-        sh "mvn clean package"
-        //def customImage = docker.build("${imageName}")
+
 
     stage "Push"
 
