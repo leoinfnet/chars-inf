@@ -17,18 +17,4 @@ node {
           sh "mvn clean package"
         } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
       }
-
-
-
-
-    stage "Push"
-
-        customImage.push()
-
-
-    stage "Deploy PROD"
-
-        //input "Deploy to PROD?"
-        //customImage.push('latest')
-        //sh "kubectl set image deployment jenkins jenkins=${imageName} --record"
 }
