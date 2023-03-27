@@ -14,7 +14,18 @@ node {
     // Configuramos os estágios
 
     stage "Build"
-        sh 'mvn -B -DskipTests clean package'
+        withMaven(
+                // Maven installation declared in the Jenkins "Global Tool Configuration"
+                maven: 'mvn', // (1)
+
+            ) {
+
+              // Run the maven build
+              sh "mvn clean package"
+
+            }
+          }
+
         //def customImage = docker.build("${imageName}")
 
 
