@@ -10,7 +10,7 @@ node {
     appName = "chars-inf"
     registryHost = "127.0.0.1:30400/"
     imageName = "${registryHost}${appName}:${tag}"
-    console.log(imageName)
+    print(imageName)
     // Configuramos os estágios
 
     stage "Build"
