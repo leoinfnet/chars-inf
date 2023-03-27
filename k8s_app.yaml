@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: chars
-          image: "127.0.0.1:30400/chars-inf:6f38805"
+          image: "127.0.0.1:30400/chars-inf:latest"
           imagePullPolicy: Always
           ports:
             - name: http
