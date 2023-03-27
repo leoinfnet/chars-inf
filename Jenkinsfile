@@ -15,6 +15,7 @@ node {
     //def customImage = docker.build("${imageName}")
     withMaven(maven: 'maven') {
           sh "mvn clean package"
-        } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+        }
+        def customImage = docker.build("${imageName}")
       }
 }
