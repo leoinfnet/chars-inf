@@ -16,8 +16,8 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'java -version'
-                echo 'This is a minimal pipeline.'
+                sh 'mvn clean package -DSkipTests '
+
             }
         }
     }
