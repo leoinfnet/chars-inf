@@ -13,9 +13,12 @@ node {
     // Configuramos os estágios
     stage ('Build') {
     //def customImage = docker.build("${imageName}")
-    withMaven(maven: 'maven') {
-          sh "mvn clean package"
+        withMaven(maven: 'maven') {
+              sh "mvn clean package"
         }
         def customImage = docker.build("${imageName}")
-      }
+    }
+    stage('Push'){
+         customImage.push()
+    }
 }
